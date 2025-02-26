@@ -6,33 +6,25 @@ import { useState } from "react";
 import { useGuardianWithSection } from "../hooks/useGuardian";
 import Loader from "../ui/Loader";
 
-const Wrapper = styled.div`
+const Ul = styled.ul`
   align-self: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
   margin: 0;
-  padding: 0;
-  & ul {
+  padding: 0 0.5rem;
+  list-style-type: none;
+  > div {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
-    list-style-type: none;
-    margin: 0;
-    padding: 0 0.5rem;
-    & > li {
-      /* border: 1px solid var(--color-text-brown-dark); */
-      margin: 0;
-      padding: 0;
-      > div {
-        display: flex;
-        justify-content: space-between;
-        > span {
-          color: var(--color-text-green);
-          margin: 0;
-          padding: 0;
-        }
+    > a {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      > li {
+        margin: 0;
+        padding: 0;
         > a {
           color: var(--color-text-green-light);
         }
@@ -63,10 +55,10 @@ function TheGuardian() {
   return (
     <PageContainer>
       <PageTitle>The Guardian</PageTitle>
-      <Wrapper>
+      <Ul>
         {data?.response?.results.map((article) => {
           return (
-            <ul key={article.id}>
+            <div key={article.id}>
               <a
                 href={article.webUrl}
                 target="_blank"
@@ -79,10 +71,10 @@ function TheGuardian() {
               <button onClick={() => setSectionName(article.sectionName)}>
                 <span>{article.sectionName}</span>
               </button>
-            </ul>
+            </div>
           );
         })}
-      </Wrapper>
+      </Ul>
     </PageContainer>
   );
 }
