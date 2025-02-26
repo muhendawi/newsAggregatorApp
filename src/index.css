@@ -1,5 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap");
-
+:root {
+  --color-background-main: #faf3ea;
+  --color-background-secondary: #f5eadc;
+  --color-text-green: #0d3c26;
+  --color-text-brown: #6b6255;
+  --color-text-brown-light: #a69986;
+}
 /* Box sizing rules */
 *,
 *::before,
@@ -36,10 +41,13 @@ ol[role="list"] {
 
 /* Set core body defaults */
 body {
+  max-width: 1440px;
+  margin: 0 auto;
   font-family: "Sorts Mill Goudy", serif;
   min-height: 100vh;
   line-height: 1.5;
   padding: 0 0.5rem;
+  background-color: var(--color-background-main);
 }
 
 /* Set shorter line heights on headings and interactive elements */
