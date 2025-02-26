@@ -21,11 +21,9 @@ const StyledNavLink = styled(NavLink)`
     /* gap: 1.2rem; */
     color: var(--color-text-green);
     font-size: 1.2rem;
-    font-weight: 500;
     padding: 0.6rem 1.3rem;
     transition: all 0.3s;
   }
-  /* This works because react-router places the active class on the active NavLink */
   &:hover,
   &:active,
   &.active:link,

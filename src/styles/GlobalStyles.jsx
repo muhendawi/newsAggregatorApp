@@ -4,9 +4,12 @@ const GlobalSTyles = createGlobalStyle`
     :root {
   --color-background-main: #faf3ea;
   --color-background-secondary: #f5eadc;
+  --color-background-green-light: #b4dfcbbc;
   --color-text-green: #0d3c26;
+  --color-text-green-light: #038247;
   --color-text-brown: #6b6255;
   --color-text-brown-light: #a69986;
+  --color-text-brown-dark: #202a25;
 }
 /* Box sizing rules */
 *,
