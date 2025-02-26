@@ -1,4 +1,7 @@
-:root {
+import { createGlobalStyle } from "styled-components";
+
+const GlobalSTyles = createGlobalStyle`
+    :root {
   --color-background-main: #faf3ea;
   --color-background-secondary: #f5eadc;
   --color-text-green: #0d3c26;
@@ -33,12 +36,18 @@ dd {
   margin-block-end: 0;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role="list"],
 ol[role="list"] {
   list-style: none;
 }
-
+ul {
+  list-style: none;
+}
 /* Set core body defaults */
 body {
   max-width: 1440px;
@@ -99,3 +108,6 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+
+`;
+export default GlobalSTyles;
