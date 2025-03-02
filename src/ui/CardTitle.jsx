@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledCardTitle = styled.h3`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--color-text-brown-dark);
 `;
 

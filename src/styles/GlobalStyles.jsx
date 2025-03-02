@@ -4,8 +4,13 @@ const GlobalSTyles = createGlobalStyle`
     :root {
   --color-background-main: #faf3ea;
   --color-background-secondary: #f5eadc;
+  --color-background-third: "#f5eadb";
   --color-background-green-light: #b4dfcbbc;
+  --color-background-green-extralight: #82968d99;
+  --color-background-green-solid: #82968d;
+  --color-background-greenish: #87968ff7;
   --color-text-green: #0d3c26;
+  --color-text-greish-light: #f5eadc;
   --color-text-green-light: #038247;
   --color-text-brown: #6b6255;
   --color-text-brown-light: #a69986;

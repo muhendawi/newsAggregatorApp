@@ -4,7 +4,9 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100dvh;
+  overflow: scroll;
+  height: auto;
+  /* height: 100dvh; */
   width: 100%;
   padding: 0 0.5rem;
   /* media query for desktop */

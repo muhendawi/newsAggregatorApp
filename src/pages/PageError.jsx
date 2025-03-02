@@ -6,20 +6,22 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100dvh;
+  align-self: center;
 `;
 const Span = styled.span`
   display: inline-block;
   rotate: 90deg;
   margin-left: 1rem;
 `;
-function PageNotFound() {
+function PageError({ children }) {
   return (
     <Container>
       <PageTitle>
-        Page Not Found <Span>:(</Span>
+        {children}
+        <Span>:(</Span>
       </PageTitle>
     </Container>
   );
 }
 
-export default PageNotFound;
+export default PageError;

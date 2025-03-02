@@ -2,15 +2,21 @@ import styled from "styled-components";
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
 
-const StyledAppLayout = styled.div``;
+const StyledAppLayout = styled.div`
+  position: relative;
+`;
+const StyledMain = styled.main`
+  overflow: scroll;
+`;
 
 function AppLayout() {
   return (
     <StyledAppLayout>
       <Header />
-      <main>
+      <StyledMain>
         <Outlet />
-      </main>
+      </StyledMain>
+      <div>Pagination</div>
     </StyledAppLayout>
   );
 }

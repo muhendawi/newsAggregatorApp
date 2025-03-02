@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useGuardianWithSection } from "../hooks/useGuardian";
 import Loader from "../ui/Loader";
+import { motion } from "framer-motion";
+import PageError from "./PageError";
 
 const Ul = styled.ul`
   align-self: flex-start;
@@ -14,10 +16,13 @@ const Ul = styled.ul`
   margin: 0;
   padding: 0 0.5rem;
   list-style-type: none;
+  z-index: 1;
+
   > div {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
+    overflow: scroll;
     > a {
       display: flex;
       flex-direction: column;
@@ -48,17 +53,39 @@ const Ul = styled.ul`
 
 function TheGuardian() {
   const [sectionName, setSectionName] = useState("");
-  const { data, isLoading } = useGuardianWithSection(sectionName);
+  const { data, isLoading, status } = useGuardianWithSection(sectionName);
+  if (status === "error") {
+    return (
+      <PageContainer>
+        <PageTitle>The Guardian</PageTitle>
+        <PageError>Something wrong, Cannot fetching data</PageError>
+      </PageContainer>
+    );
+  }
   if (isLoading) {
-    return <Loader />;
+    return (
+      <PageContainer>
+        <PageTitle>The Guardian</PageTitle>
+        <Loader />
+      </PageContainer>
+    );
   }
   return (
     <PageContainer>
       <PageTitle>The Guardian</PageTitle>
       <Ul>
-        {data?.response?.results.map((article) => {
+        {data?.response?.results.map((article, index) => {
           return (
-            <div key={article.id}>
+            <motion.div
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                type: "spring",
+                duration: 0.5,
+                delay: 0.1 * index,
+              }}
+              key={article.id}
+            >
               <a
                 href={article.webUrl}
                 target="_blank"
@@ -68,10 +95,11 @@ function TheGuardian() {
                   <CardTitle>{article.webTitle}</CardTitle>
                 </li>
               </a>
+
               <button onClick={() => setSectionName(article.sectionName)}>
                 <span>{article.sectionName}</span>
               </button>
-            </div>
+            </motion.div>
           );
         })}
       </Ul>

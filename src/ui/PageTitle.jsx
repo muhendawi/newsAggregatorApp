@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const PageTitle = styled.h2`
+  text-align: center;
   margin: 0;
   padding-top: 0;
   font-size: 2.5rem;

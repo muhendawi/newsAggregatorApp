@@ -7,8 +7,8 @@ import NewsAPI from "./pages/NewsAPI";
 import TheNewYorkTimes from "./pages/TheNewYorkTimes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import GlobalSTyles from "./styles/GlobalStyles";
-import PageNotFound from "./pages/PageNotFound";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import PageError from "./pages/PageError";
 
 const queryClient = new QueryClient();
 function App() {
@@ -22,12 +22,12 @@ function App() {
             <Route path="/guardian" element={<TheGuardian />} />
             <Route path="/newsAPI" element={<NewsAPI />} />
             <Route path="/nyTimes" element={<TheNewYorkTimes />} />
+            <Route path="*" element={<PageError>Page Not Found</PageError>} />
           </Route>
-          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
       <GlobalSTyles />
-      {/* <ReactQueryDevtools /> */}
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }
