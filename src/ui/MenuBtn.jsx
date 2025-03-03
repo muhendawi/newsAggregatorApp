@@ -3,7 +3,7 @@ import { RiMenu2Fill } from "react-icons/ri";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useMediaQuery } from "@react-hook/media-query";
 
-const StyledMenuBtn = styled.button`
+const MotionStyledMenuBtn = styled(motion.button)`
   position: fixed;
   top: 2rem;
   left: 1.5rem;
@@ -14,12 +14,16 @@ const StyledMenuBtn = styled.button`
   align-items: center;
   cursor: pointer;
   transition: all 0.3s;
+  &:hover {
+    transition: all 0.3s;
+    scale: 1.1;
+  }
   //  media query for desktop
   @media (min-width: 768px) {
     display: none;
   }
 `;
-const MotionStyledMenuBtn = motion.create(StyledMenuBtn);
+
 function MenuBtn({ toggleSidebarMenu }) {
   const { scrollY } = useScroll();
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -38,7 +42,7 @@ function MenuBtn({ toggleSidebarMenu }) {
     [0, 90, 100],
     isMobile ? [1, 1, 1] : [0, 0, 1]
   );
-  const padding = useTransform(scrollY, [0, 90, 100], ["0", "0", "1rem"]);
+  const padding = useTransform(scrollY, [0, 90, 100], ["0", "0", ".8rem"]);
   const borderRadius = useTransform(scrollY, [0, 100], ["0", "50%"]);
   const boxShadow = useTransform(
     scrollY,

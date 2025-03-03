@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FiX } from "react-icons/fi";
 import styled from "styled-components";
+import useStopScrolling from "../hooks/useStopScrolling";
 
 const SidebarOverlay = styled.div`
   position: fixed;
@@ -40,7 +41,8 @@ const MotionSidebarContent = motion.create(SidebarContent);
 const MotionSidebarOverlay = motion.create(SidebarOverlay);
 const MotionFixContainer = motion.create(FiXContainer);
 
-function SidebarMenu({ onClose, children }) {
+function SidebarMenu({ isOpen, onClose, children }) {
+  useStopScrolling(isOpen);
   return (
     <MotionSidebarOverlay exit={{ display: "none" }} onClick={onClose}>
       <MotionSidebarContent

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import useStopScrolling from "../hooks/useStopScrolling";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -15,7 +16,8 @@ const ModalOverlay = styled.div`
 
 const MotionModalOverlay = motion.create(ModalOverlay);
 
-export default function Modal({ children, onClose }) {
+export default function Modal({ children, onClose, isOpen }) {
+  useStopScrolling(isOpen);
   return (
     <MotionModalOverlay exit={{ display: "none" }} onClick={onClose}>
       {children}

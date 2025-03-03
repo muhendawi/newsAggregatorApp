@@ -32,7 +32,7 @@ function SearchBtn({ toggleSearchModal }) {
     [0, 80, 100],
     ["#0d3c26", "#0d3c26", "#f5eadc"]
   );
-  const padding = useTransform(scrollY, [0, 90, 100], ["0", "0", "1rem"]);
+  const padding = useTransform(scrollY, [0, 90, 100], ["0", "0", ".8rem"]);
   const borderRadius = useTransform(scrollY, [0, 100], ["0", "50%"]);
   const boxShadow = useTransform(
     scrollY,

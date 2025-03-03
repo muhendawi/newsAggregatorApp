@@ -11,6 +11,7 @@ const GlobalSTyles = createGlobalStyle`
   --color-background-greenish: #87968ff7;
   --color-text-green: #0d3c26;
   --color-text-greish-light: #f5eadc;
+  --color-text-greyish-dark:#c3bbae;
   --color-text-green-light: #038247;
   --color-text-brown: #6b6255;
   --color-text-brown-light: #a69986;
