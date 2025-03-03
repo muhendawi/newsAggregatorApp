@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const PageTitle = styled.h2`
+const PageTitle = styled.h1`
   text-align: center;
   margin: 0;
-  padding-top: 0;
+  padding: 0.5rem;
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--color-text-green);
