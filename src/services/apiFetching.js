@@ -10,11 +10,12 @@ const fetchGuardian = async (sectionName) => {
 
   return response.json();
 };
+//-----------------------------------------------------------------------------------------
 
 const NEWS_API_KEY = "8b5332ca1aee4434b343b44750b1cd85";
 const fetchNewsAPI = async () => {
   const response = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWS_API_KEY}`
+    `https://newsapi.org/v2/top-headlines/sources?apiKey=${NEWS_API_KEY}`
   );
 
   if (!response.ok) {

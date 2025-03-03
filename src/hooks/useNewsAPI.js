@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchNewsAPI } from "../services/apiFetching";
 
-const useNewsAPIWithSearch = (search) => {
+const useNewsAPIWithSearch = () => {
   return useQuery({
-    queryKey: ["newsApi", search],
+    queryKey: ["newsApi"],
     queryFn: fetchNewsAPI,
   });
 };

@@ -16,5 +16,9 @@ const ModalOverlay = styled.div`
 const MotionModalOverlay = motion.create(ModalOverlay);
 
 export default function Modal({ children, onClose }) {
-  return <MotionModalOverlay onClick={onClose}>{children}</MotionModalOverlay>;
+  return (
+    <MotionModalOverlay exit={{ display: "none" }} onClick={onClose}>
+      {children}
+    </MotionModalOverlay>
+  );
 }

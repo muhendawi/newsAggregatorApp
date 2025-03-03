@@ -16,23 +16,10 @@ const SearchBtnContainer = styled.div`
     transition: all 0.3s;
     scale: 1.1;
   }
-  /* media query for desktop
-  @media (min-width: 768px) {
-    left: 2.5rem;
-  } */
 `;
-// const SearchOverlay = styled.div`
-//   position: absolute;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: red;
-//   height: 100%;
-//   width: 100%;
-// `;
 
 const MotionSearchContainer = motion.create(SearchBtnContainer);
-// const MotionSearchOverlay = motion.create(SearchOverlay);
+
 function SearchBtn({ toggleSearchModal }) {
   const { scrollY } = useScroll();
   const backgroundColor = useTransform(

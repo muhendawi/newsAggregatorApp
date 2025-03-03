@@ -1,19 +1,18 @@
 import PageContainer from "../ui/PageContainer";
 import PageTitle from "../ui/PageTitle";
 import { useNewsAPIWithSearch } from "../hooks/useNewsAPI";
-import styled from "styled-components";
 
 function NewsAPI() {
-  const { data } = useNewsAPIWithSearch("");
-
+  const { data } = useNewsAPIWithSearch();
+  console.log(data?.sources);
   return (
     <PageContainer>
       <PageTitle>News API</PageTitle>
 
-      {data?.articles.map((article) => (
-        <div key={article.title}>
-          <h2>{article.title}</h2>
-          <p>{article.content}</p>
+      {data?.sources?.map((source) => (
+        <div key={source.id}>
+          <h2>{source.name}</h2>
+          <p>{source.description}</p>
         </div>
       ))}
     </PageContainer>

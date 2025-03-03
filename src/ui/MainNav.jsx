@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
-import navListData from "../data/navList.json";
+import navListData from "../data/navItems.json";
 
 const StyledNav = styled.nav`
   margin-right: auto;
