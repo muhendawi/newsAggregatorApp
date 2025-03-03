@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import PageTitle from "../ui/PageTitle";
 
 const Container = styled.div`
   display: flex;
@@ -13,13 +12,24 @@ const Span = styled.span`
   rotate: 90deg;
   margin-left: 1rem;
 `;
+const ErrorMsg = styled.p`
+  text-align: center;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-green);
+  /* media query for desktop */
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+`;
 function PageError({ children }) {
   return (
     <Container>
-      <PageTitle>
+      <ErrorMsg>
         {children}
         <Span>:(</Span>
-      </PageTitle>
+      </ErrorMsg>
     </Container>
   );
 }

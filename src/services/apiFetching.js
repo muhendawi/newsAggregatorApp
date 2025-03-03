@@ -1,6 +1,7 @@
+const GUARDIAN_API_KEY = "81910c88-7ec8-4f5f-be38-eb37ced3daae";
 const fetchGuardian = async (sectionName) => {
   const response = await fetch(
-    `https://content.guardianapis.com/search?q=${sectionName}&api-key=81910c88-7ec8-4f5f-be38-eb37ced3daae`
+    `https://content.guardianapis.com/search?q=${sectionName}&api-key=${GUARDIAN_API_KEY}`
   );
 
   if (!response.ok) {
@@ -10,9 +11,10 @@ const fetchGuardian = async (sectionName) => {
   return response.json();
 };
 
+const NEWS_API_KEY = "8b5332ca1aee4434b343b44750b1cd85";
 const fetchNewsAPI = async () => {
   const response = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=us&apiKey=8b5332ca1aee4434b343b44750b1cd85`
+    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWS_API_KEY}`
   );
 
   if (!response.ok) {

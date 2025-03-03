@@ -6,7 +6,7 @@ const StyledSearchContent = styled.div`
   border-radius: 1rem;
   background-color: var(--color-background-greenish);
   min-width: 300px;
-  width: 70dvw;
+  width: 85dvw;
   height: auto;
   box-shadow: 0 0 5em 0.6rem rgba(0, 0, 0, 0.3);
   /* media query for desktop */
@@ -21,7 +21,7 @@ const SearchInput = styled.input`
   border-bottom: 1px solid var(--color-background-secondary);
   background-color: var(--color-background-greenish);
   min-width: 300px;
-  width: 70dvw;
+  width: 85dvw;
   cursor: pointer;
   padding: 0.8rem 1.5rem 0.6rem 1.5rem;
   border-top-left-radius: 1rem;
@@ -87,10 +87,10 @@ function SearchContent({ search, setSearch }) {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -20, opacity: 0 }}
           transition={{
-            duration: 0.1,
-            type: "spring",
-            stiffness: 100,
-            damping: 10,
+            duration: 0.3,
+            // type: "spring",
+            // stiffness: 100,
+            // damping: 10,
           }}
         >
           <StyledLabel id="" />

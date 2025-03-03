@@ -52,12 +52,13 @@ const Ul = styled.ul`
 `;
 
 function TheGuardian() {
+  const PAGE_TITLE = "The Guardian";
   const [sectionName, setSectionName] = useState("");
-  const { data, isLoading, status } = useGuardianWithSection(sectionName);
-  if (status === "error") {
+  const { data, isLoading, isError } = useGuardianWithSection(sectionName);
+  if (isError) {
     return (
       <PageContainer>
-        <PageTitle>The Guardian</PageTitle>
+        <PageTitle>{PAGE_TITLE}</PageTitle>
         <PageError>Something wrong, Cannot fetching data</PageError>
       </PageContainer>
     );
@@ -65,18 +66,18 @@ function TheGuardian() {
   if (isLoading) {
     return (
       <PageContainer>
-        <PageTitle>The Guardian</PageTitle>
+        <PageTitle>{PAGE_TITLE}</PageTitle>
         <Loader />
       </PageContainer>
     );
   }
   return (
     <PageContainer>
-      <PageTitle>The Guardian</PageTitle>
+      <PageTitle>{PAGE_TITLE}</PageTitle>
       <Ul>
         {data?.response?.results.map((article, index) => {
           return (
-            <motion.div
+            <motion.li
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{
@@ -91,15 +92,12 @@ function TheGuardian() {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <li>
-                  <CardTitle>{article.webTitle}</CardTitle>
-                </li>
+                <CardTitle>{article.webTitle}</CardTitle>
               </a>
-
               <button onClick={() => setSectionName(article.sectionName)}>
                 <span>{article.sectionName}</span>
               </button>
-            </motion.div>
+            </motion.li>
           );
         })}
       </Ul>

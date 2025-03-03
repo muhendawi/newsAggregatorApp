@@ -1,0 +1,20 @@
+{
+  "navItems": [
+    {
+      "itemTitle": "News Feed",
+      "itemPath": "/newsFeed"
+    },
+    {
+      "itemTitle": "The Guardian",
+      "itemPath": "/guardian"
+    },
+    {
+      "itemTitle": "NYTimes",
+      "itemPath": "/nyTimes"
+    },
+    {
+      "itemTitle": "News API",
+      "itemPath": "/newsAPI"
+    }
+  ]
+}

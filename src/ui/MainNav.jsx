@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
+import navListData from "../data/navList.json";
 
 const StyledNav = styled.nav`
   margin-right: auto;
@@ -33,7 +34,15 @@ const StyledNavLink = styled(NavLink)`
       css`
         color: var(--color-text-greish-light);
         font-size: 1.7rem;
+        padding-left: 2.5rem;
       `}
+    @media (max-width: 768px) {
+      ${({ $isSidebarOpen }) =>
+        $isSidebarOpen &&
+        css`
+          padding-left: 1.5rem;
+        `}
+    }
   }
   &:hover,
   &:active,
@@ -59,66 +68,24 @@ function MainNav({ isSidebarOpen = false, onClose }) {
   return (
     <StyledNav $isSidebarOpen={isSidebarOpen}>
       <NavList $isSidebarOpen={isSidebarOpen}>
-        <motion.li
-          variants={liVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          transition={{ duration: 0.3, delay: 0.1 }}
-        >
-          <StyledNavLink
-            to="/newsFeed"
-            $isSidebarOpen={isSidebarOpen}
-            onClick={onClose}
+        {navListData.navItems.map((item, index) => (
+          <motion.li
+            key={item.itemPath}
+            variants={liVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            transition={{ duration: 0.3, delay: 0.1 * (index + 1) }}
           >
-            <span>News Feed</span>
-          </StyledNavLink>
-        </motion.li>
-        <motion.li
-          variants={liVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          transition={{ duration: 0.3, delay: 0.2 }}
-        >
-          <StyledNavLink
-            to="/guardian"
-            $isSidebarOpen={isSidebarOpen}
-            onClick={onClose}
-          >
-            <span>The Guardian</span>
-          </StyledNavLink>
-        </motion.li>
-        <motion.li
-          variants={liVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          transition={{ duration: 0.3, delay: 0.3 }}
-        >
-          <StyledNavLink
-            to="/nyTimes"
-            $isSidebarOpen={isSidebarOpen}
-            onClick={onClose}
-          >
-            <span>NYTimes</span>
-          </StyledNavLink>
-        </motion.li>
-        <motion.li
-          variants={liVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          transition={{ duration: 0.3, delay: 0.4 }}
-        >
-          <StyledNavLink
-            to="/NewsAPI"
-            $isSidebarOpen={isSidebarOpen}
-            onClick={onClose}
-          >
-            <span>News API</span>
-          </StyledNavLink>
-        </motion.li>
+            <StyledNavLink
+              to={item.itemPath}
+              $isSidebarOpen={isSidebarOpen}
+              onClick={onClose}
+            >
+              <span>{item.itemTitle}</span>
+            </StyledNavLink>
+          </motion.li>
+        ))}
       </NavList>
     </StyledNav>
   );
