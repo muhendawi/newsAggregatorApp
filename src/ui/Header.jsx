@@ -43,7 +43,8 @@ function Header() {
           >
             <SearchContent
               search={search}
-              setSearch={(e) => setSearch(e.target.value)}
+              setSearch={setSearch}
+              onClose={() => setIsSearchModalOpen(false)}
             />
           </Modal>
         )}

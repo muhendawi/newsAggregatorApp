@@ -10,6 +10,8 @@ const fetchGuardian = async (sectionName) => {
 
   return response.json();
 };
+
+// https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test
 //-----------------------------------------------------------------------------------------
 
 const NEWS_API_KEY = "8b5332ca1aee4434b343b44750b1cd85";
