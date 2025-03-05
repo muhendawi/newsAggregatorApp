@@ -14,10 +14,7 @@ const MotionStyledMenuBtn = styled(motion.button)`
   align-items: center;
   cursor: pointer;
   transition: all 0.3s;
-  &:hover {
-    transition: all 0.3s;
-    scale: 1.1;
-  }
+
   //  media query for desktop
   @media (min-width: 768px) {
     display: none;

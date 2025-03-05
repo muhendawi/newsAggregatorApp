@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import styled from "styled-components";
 import { FiSearch } from "react-icons/fi";
 
@@ -9,6 +9,7 @@ const StyledSearchContent = styled.div`
   width: 100dvw;
   height: auto;
   box-shadow: 0 0 5em 0.6rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
   /* media query for desktop */
   @media (min-width: 768px) {
     max-width: 800px;
@@ -18,7 +19,6 @@ const StyledSearchContent = styled.div`
 const SearchInput = styled.input`
   position: relative;
   border: none;
-  border-bottom: 1px solid var(--color-text-greyish-dark);
   background-color: transparent;
   width: 100%;
   cursor: text;
@@ -42,6 +42,7 @@ const StyledFiSearchContainer = styled.div`
 `;
 
 const SearchOptions = styled.div`
+  border-top: 1px solid var(--color-text-greyish-dark);
   padding: 0.7rem 1.5rem;
 `;
 
@@ -50,7 +51,10 @@ const StyledInput = styled.input`
   transform: scale(1.1);
   accent-color: var(--color-text-green);
 `;
-const StyledLabel = styled.label``;
+const StyledLabel = styled.label`
+  color: var(--color-text-greish-light);
+  padding-left: 1.9rem;
+`;
 
 const MotionStyledSearchContent = motion.create(StyledSearchContent);
 const MotionSearchOptions = motion.create(SearchOptions);
@@ -58,6 +62,23 @@ const MotionSearchInput = motion.create(SearchInput);
 const MotionStyledFiSearchContainer = motion.create(StyledFiSearchContainer);
 
 function SearchContent({ search, setSearch }) {
+  const searchInputVariants = {
+    initial: {
+      y: -100,
+      opacity: 0,
+    },
+    animate: {
+      y: 0,
+      opacity: 1,
+    },
+    exit: {
+      y: -100,
+      opacity: 0,
+      transition: { duration: 0.1 },
+    },
+    transition: { duration: 0.3, delay: 0.1 },
+  };
+
   return (
     <MotionStyledSearchContent
       initial={{
@@ -85,59 +106,44 @@ function SearchContent({ search, setSearch }) {
         autoFocus
         value={search}
         onChange={setSearch}
-        initial={{
-          y: -100,
-          opacity: 0,
-          borderBottomLeftRadius: "200%",
-          borderBottomRightRadius: "200%",
-        }}
-        animate={{
-          y: 0,
-          opacity: 1,
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0,
-        }}
-        exit={{
-          y: -100,
-          opacity: 0,
-          borderBottomLeftRadius: "200%",
-          borderBottomRightRadius: "200%",
-          transition: { duration: 0.1 },
-        }}
-        transition={{ duration: 0.3, delay: 0.2 }}
+        variants={searchInputVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition="transition"
       />
       <MotionStyledFiSearchContainer
-        initial={{
-          y: -100,
-          opacity: 0,
-        }}
-        animate={{
-          y: 0,
-          opacity: 1,
-        }}
-        exit={{
-          y: -100,
-          opacity: 0,
-
-          transition: { duration: 0.1 },
-        }}
-        transition={{ duration: 0.3, delay: 0.2 }}
+        variants={searchInputVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition="transition"
       >
         <FiSearch size={22} />
       </MotionStyledFiSearchContainer>
-      <MotionSearchOptions
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{
-          y: -100,
-          opacity: 0,
-          transition: { duration: 0.1 },
-        }}
-        transition={{ duration: 0.3, delay: 0.1 }}
-      >
-        <StyledLabel id="" />
-        <StyledInput type="checkbox" />
-      </MotionSearchOptions>
+      <AnimatePresence>
+        {search && (
+          <MotionSearchOptions
+            initial={{
+              y: "-100%",
+              opacity: 0,
+            }}
+            animate={{
+              y: 0,
+              opacity: 1,
+            }}
+            exit={{
+              y: "-100%",
+              opacity: 0,
+              transition: { duration: 0.2 },
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <StyledLabel id="">Guardian</StyledLabel>
+            <StyledInput type="checkbox" />
+          </MotionSearchOptions>
+        )}
+      </AnimatePresence>
     </MotionStyledSearchContent>
   );
 }

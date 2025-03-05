@@ -32,11 +32,14 @@ function Header() {
         toggleSearchModal={() => setIsSearchModalOpen(!isSearchModalOpen)}
       />
       {/* The Search Modal 👇 */}
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence>
         {isSearchModalOpen && (
           <Modal
             isOpen={isSearchModalOpen}
-            onClose={() => setIsSearchModalOpen(false)}
+            onClose={() => {
+              setIsSearchModalOpen(false);
+              setSearch("");
+            }}
           >
             <SearchContent
               search={search}
